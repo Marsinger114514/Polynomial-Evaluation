@@ -1,63 +1,64 @@
 #ifndef __POLYNOMIAL_H__
 #define __POLYNOMIAL_H__
 
-#include "LinkList.h"			// é“¾è¡¨ç±»
-#include "PolyItem.h"			// å¤šé¡¹å¼é¡¹ç±»
+#include "LinkList.h"			// Á´±íÀà
+#include "PolyItem.h"			// ¶àÏîÊ½ÏîÀà
 
 
-// å¤šé¡¹å¼ç±»
+// ¶àÏîÊ½Àà
 class Polynomial
 {
 protected:
-// å¤šé¡¹å¼å®ç°çš„æ•°æ®æˆå‘˜:
-	LinkList<PolyItem> polyList;// å¤šé¡¹å¼ç»„æˆçš„çº¿æ€§è¡¨
+// ¶àÏîÊ½ÊµÏÖµÄÊı¾İ³ÉÔ±:
+	LinkList<PolyItem> polyList;// ¶àÏîÊ½×é³ÉµÄÏßĞÔ±í
 
 public:
-	//  æŠ½è±¡æ•°æ®ç±»å‹æ–¹æ³•å£°æ˜åŠé‡è½½ç¼–è¯‘ç³»ç»Ÿé»˜è®¤æ–¹æ³•å£°æ˜:
-	Polynomial(){};				// æ— å‚æ„é€ å‡½æ•°
-	~Polynomial(){};			// ææ„å‡½æ•°
-	int Length() const;			// æ±‚å¤šé¡¹å¼çš„é¡¹æ•°			 
-	bool IsZero() const;		// åˆ¤æ–­å¤šé¡¹å¼æ˜¯å¦ä¸º0
-	void SetZero();				// å°†å¤šé¡¹å¼ç½®ä¸º0
-	void Display();				// æ˜¾ç¤ºå¤šé¡¹å¼
-	void InsItem( const PolyItem &item);		// æ’å…¥ä¸€é¡¹
-	Polynomial operator +(const Polynomial &p) const; // åŠ æ³•è¿ç®—ç¬¦é‡è½½
-	Polynomial(const Polynomial &copy);			// å¤åˆ¶æ„é€ å‡½æ•°
+	//  ³éÏóÊı¾İÀàĞÍ·½·¨ÉùÃ÷¼°ÖØÔØ±àÒëÏµÍ³Ä¬ÈÏ·½·¨ÉùÃ÷:
+	Polynomial(){};				// ÎŞ²Î¹¹Ôìº¯Êı
+	~Polynomial(){};			// Îö¹¹º¯Êı
+	int Length() const;			// Çó¶àÏîÊ½µÄÏîÊı			 
+	bool IsZero() const;		// ÅĞ¶Ï¶àÏîÊ½ÊÇ·ñÎª0
+	void SetZero();				// ½«¶àÏîÊ½ÖÃÎª0
+	void Display();				// ÏÔÊ¾¶àÏîÊ½
+	void InsItem( const PolyItem &item);		// ²åÈëÒ»Ïî
+	Polynomial operator +(const Polynomial &p) const; // ¼Ó·¨ÔËËã·ûÖØÔØ
+	Polynomial(const Polynomial &copy);			// ¸´ÖÆ¹¹Ôìº¯Êı
 	Polynomial(const LinkList<PolyItem> &copyLinkList);				
-		// ç”±å¤šé¡¹å¼ç»„æˆçš„çº¿æ€§è¡¨æ„é€ å¤šé¡¹å¼
-	Polynomial d() const;						//æ±‚å¯¼å‡½æ•°
-	Polynomial &operator =(const Polynomial &copy);	// èµ‹å€¼è¯­å¥é‡è½½
-	Polynomial &operator =(const LinkList<PolyItem> &copyLinkList);	// èµ‹å€¼è¯­å¥é‡è½½
+		// ÓÉ¶àÏîÊ½×é³ÉµÄÏßĞÔ±í¹¹Ôì¶àÏîÊ½
+	Polynomial d() const;						//Çóµ¼º¯Êı
+	Polynomial operator* (const Polynomial& p)const;
+	Polynomial &operator =(const Polynomial &copy);	// ¸³ÖµÓï¾äÖØÔØ
+	Polynomial &operator =(const LinkList<PolyItem> &copyLinkList);	// ¸³ÖµÓï¾äÖØÔØ
 };
 
 
-// å¤šé¡¹å¼ç±»çš„å®ç°éƒ¨åˆ†
+// ¶àÏîÊ½ÀàµÄÊµÏÖ²¿·Ö
 
 int Polynomial::Length() const
-// æ“ä½œç»“æœï¼šè¿”å›å¤šé¡¹å¼çš„é¡¹æ•°
+// ²Ù×÷½á¹û£º·µ»Ø¶àÏîÊ½µÄÏîÊı
 {
 	return polyList.GetLength();
 }
 
 bool Polynomial::IsZero() const
-// æ“ä½œç»“æœï¼šå¦‚å¤šé¡¹å¼ä¸º0ï¼Œåˆ™è¿”å›trueï¼Œå¦åˆ™è¿”å›false
+// ²Ù×÷½á¹û£ºÈç¶àÏîÊ½Îª0£¬Ôò·µ»Øtrue£¬·ñÔò·µ»Øfalse
 {
 	return polyList.IsEmpty();
 }
 
 void Polynomial::SetZero()
-// æ“ä½œç»“æœï¼šå°†å¤šé¡¹å¼ç½®ä¸º0
+// ²Ù×÷½á¹û£º½«¶àÏîÊ½ÖÃÎª0
 {
 	polyList.Clear(); 
 }
 
 void Polynomial::Display()
-// æ“ä½œç»“æœï¼šæ˜¾ç¤ºå¤šé¡¹å¼
+// ²Ù×÷½á¹û£ºÏÔÊ¾¶àÏîÊ½
 {
 	int pos = 1;
 	PolyItem it;
 	Status status = polyList.GetElem(pos, it);
-	while ( status == ENTRY_FOUND)	{// ä¾æ¬¡æ˜¾ç¤ºå¤šé¡¹å¼çš„æ¯ä¸€é¡¹
+	while ( status == ENTRY_FOUND)	{// ÒÀ´ÎÏÔÊ¾¶àÏîÊ½µÄÃ¿Ò»Ïî
 	    if (pos > 1 && it.coef>0)
           cout<<"+";
         if ( it.coef != 1)
@@ -70,19 +71,19 @@ void Polynomial::Display()
         else
            if (it.expn == 1)
                cout << "x"  ;
-		status = polyList.GetElem(++pos, it);	// å–å‡ºä¸‹ä¸€é¡¹
+		status = polyList.GetElem(++pos, it);	// È¡³öÏÂÒ»Ïî
 	}
 }
 
 void Polynomial::InsItem( const PolyItem &item)
-// æ“ä½œç»“æœï¼šå‘å¤šé¡¹å¼æ’å…¥ä¸€é¡¹
+// ²Ù×÷½á¹û£ºÏò¶àÏîÊ½²åÈëÒ»Ïî
 {
 	int pos = 1;
 	PolyItem it;
 	Status status = polyList.GetElem(pos, it);
-	while ( status == ENTRY_FOUND && it.expn > item.expn) 	// æŸ¥æ‰¾æ’å…¥ä½ç½®
+	while ( status == ENTRY_FOUND && it.expn > item.expn) 	// ²éÕÒ²åÈëÎ»ÖÃ
 			status = polyList.GetElem(++pos, it);
-	polyList.InsertElem(pos, item);					            // å‘å¤šé¡¹å¼æ’å…¥ä¸€é¡¹
+	polyList.InsertElem(pos, item);					            // Ïò¶àÏîÊ½²åÈëÒ»Ïî
 }
 
 Polynomial Polynomial::d() const {
@@ -100,72 +101,94 @@ Polynomial Polynomial::d() const {
 			lb.InsertElem(aItem);
 		aStatus = la.GetElem(aPos++, aItem);
 	}
-	Polynomial fa;							// å’Œå¤šé¡¹å¼
+	Polynomial fa;							// ºÍ¶àÏîÊ½
 	fa.polyList = lb;
 	return fa;
 }
 
-Polynomial Polynomial::operator +(const Polynomial &p) const
-// æ“ä½œç»“æœï¼šè¿”å›å½“å‰å¤šé¡¹å¼ä¸pä¹‹å’Œâ€”â€”åŠ æ³•è¿ç®—ç¬¦é‡è½½
+inline Polynomial Polynomial::operator*(const Polynomial& p) const
 {
-	LinkList<PolyItem> la = polyList;			// å½“å‰å¤šé¡¹å¼å¯¹åº”çš„çº¿æ€§è¡¨
-	LinkList<PolyItem> lb = p.polyList;			// å¤šé¡¹å¼på¯¹åº”çš„çº¿æ€§è¡¨
-	LinkList<PolyItem> lc;						// å’Œå¤šé¡¹å¼å¯¹åº”çš„çº¿æ€§è¡¨
+	Polynomial temp;
+	Status astatus, bstatus;
+	LinkList<PolyItem>la = polyList;	//µ±Ç°¶àÏîÊ½¶ÔÓ¦µÄÏßĞÔ±í
+	LinkList<PolyItem>lb = p.polyList;	//¶àÏîÊ½p¶ÔÓ¦µÄÏßĞÔ±í
+	LinkList<PolyItem>lc;				//³Ë¶àÏîÊ½¶ÔÓ¦µÄÏßĞÔ±í
+	PolyItem aItem, bItem;
+	int aPos = 1, bPos = 1; 
+	astatus = la.GetElem(aPos++, aItem);			// È¡³ölaµÄµÚ1Ïî 
+	while (astatus == ENTRY_FOUND) {
+		bPos = 1;
+		bstatus = lb.GetElem(bPos++, bItem);			// È¡³ölbµÄµÚ1Ïî
+		while (bstatus == ENTRY_FOUND) {
+			temp.InsItem(PolyItem(aItem.coef*bItem.coef,aItem.expn+bItem.expn));
+			bstatus = lb.GetElem(bPos++, bItem);		//È¡³ölbµÄÏÂÒ»Ïî
+		}
+		astatus = la.GetElem(aPos++, aItem);	//È¡³ölaµÄÏÂÒ»Ïî
+	}
+	return temp;
+}
+
+Polynomial Polynomial::operator +(const Polynomial &p) const
+// ²Ù×÷½á¹û£º·µ»Øµ±Ç°¶àÏîÊ½ÓëpÖ®ºÍ¡ª¡ª¼Ó·¨ÔËËã·ûÖØÔØ
+{
+	LinkList<PolyItem> la = polyList;			// µ±Ç°¶àÏîÊ½¶ÔÓ¦µÄÏßĞÔ±í
+	LinkList<PolyItem> lb = p.polyList;			// ¶àÏîÊ½p¶ÔÓ¦µÄÏßĞÔ±í
+	LinkList<PolyItem> lc;						// ºÍ¶àÏîÊ½¶ÔÓ¦µÄÏßĞÔ±í
 	int aPos = 1, bPos = 1;
 	PolyItem aItem, bItem;
 	Status aStatus, bStatus;
 	
-	aStatus = la.GetElem(aPos++, aItem);			// å–å‡ºlaçš„ç¬¬1é¡¹ 
-	bStatus = lb.GetElem(bPos++, bItem);			// å–å‡ºlbçš„ç¬¬1é¡¹
+	aStatus = la.GetElem(aPos++, aItem);			// È¡³ölaµÄµÚ1Ïî 
+	bStatus = lb.GetElem(bPos++, bItem);			// È¡³ölbµÄµÚ1Ïî
 
 	while (aStatus == ENTRY_FOUND && bStatus == ENTRY_FOUND )	{
-		if (aItem.expn > bItem.expn) {		// laä¸­çš„é¡¹aItemæŒ‡æ•°è¾ƒå°
-			lc.InsertElem(aItem);	// å°†aItemè¿½åŠ åˆ°lcçš„è¡¨å°¾ 
-			aStatus = la.GetElem(aPos++, aItem);// å–å‡ºlaçš„ç¬¬ä¸‹ä¸€é¡¹
+		if (aItem.expn > bItem.expn) {		// laÖĞµÄÏîaItemÖ¸Êı½ÏĞ¡
+			lc.InsertElem(aItem);	// ½«aItem×·¼Óµ½lcµÄ±íÎ² 
+			aStatus = la.GetElem(aPos++, aItem);// È¡³ölaµÄµÚÏÂÒ»Ïî
 		}
-		else if (aItem.expn < bItem.expn) {	// lbä¸­çš„é¡¹bItemæŒ‡æ•°è¾ƒå°
-			lc.InsertElem(bItem);	// å°†bItemè¿½åŠ åˆ°lcçš„è¡¨å°¾
-			bStatus = lb.GetElem(bPos++, bItem);// å–å‡ºlbçš„ç¬¬ä¸‹ä¸€é¡¹
+		else if (aItem.expn < bItem.expn) {	// lbÖĞµÄÏîbItemÖ¸Êı½ÏĞ¡
+			lc.InsertElem(bItem);	// ½«bItem×·¼Óµ½lcµÄ±íÎ²
+			bStatus = lb.GetElem(bPos++, bItem);// È¡³ölbµÄµÚÏÂÒ»Ïî
 		}
-		else {	// laä¸­çš„é¡¹aItemå’Œlbä¸­çš„é¡¹bItemæŒ‡æ•°ç›¸ç­‰
+		else {	// laÖĞµÄÏîaItemºÍlbÖĞµÄÏîbItemÖ¸ÊıÏàµÈ
 			PolyItem sumItem(aItem.coef + bItem.coef, aItem.expn);
 			if (sumItem.coef != 0)
-				lc.InsertElem(sumItem);	// å°†ä¸¤é¡¹çš„å’Œè¿½åŠ åˆ°lcçš„è¡¨å°¾
-			aStatus = la.GetElem(aPos++, aItem);// å–å‡ºlaçš„ç¬¬ä¸‹ä¸€é¡¹
-			bStatus = lb.GetElem(bPos++, bItem);// å–å‡ºlbçš„ç¬¬ä¸‹ä¸€é¡¹
+				lc.InsertElem(sumItem);	// ½«Á½ÏîµÄºÍ×·¼Óµ½lcµÄ±íÎ²
+			aStatus = la.GetElem(aPos++, aItem);// È¡³ölaµÄµÚÏÂÒ»Ïî
+			bStatus = lb.GetElem(bPos++, bItem);// È¡³ölbµÄµÚÏÂÒ»Ïî
 		}
 	}
 
-	while (aStatus == ENTRY_FOUND) {	// å°†laçš„å‰©ä½™é¡¹è¿½åŠ åˆ°lcçš„åé¢
-		lc.InsertElem(aItem);	// å°†aItemè¿½åŠ åˆ°lcçš„åé¢
-		aStatus = la.GetElem(aPos++, aItem);// å–å‡ºlaçš„ç¬¬ä¸‹ä¸€é¡¹
+	while (aStatus == ENTRY_FOUND) {	// ½«laµÄÊ£ÓàÏî×·¼Óµ½lcµÄºóÃæ
+		lc.InsertElem(aItem);	// ½«aItem×·¼Óµ½lcµÄºóÃæ
+		aStatus = la.GetElem(aPos++, aItem);// È¡³ölaµÄµÚÏÂÒ»Ïî
 	}
 
-	while (bStatus == ENTRY_FOUND) {	// å°†lbçš„å‰©ä½™é¡¹è¿½åŠ åˆ°lcçš„åé¢
-		lc.InsertElem(bItem);	// å°†bItemè¿½åŠ åˆ°lcçš„åé¢
-		bStatus = lb.GetElem(bPos++, bItem);// å–å‡ºlbçš„ç¬¬ä¸‹ä¸€é¡¹
+	while (bStatus == ENTRY_FOUND) {	// ½«lbµÄÊ£ÓàÏî×·¼Óµ½lcµÄºóÃæ
+		lc.InsertElem(bItem);	// ½«bItem×·¼Óµ½lcµÄºóÃæ
+		bStatus = lb.GetElem(bPos++, bItem);// È¡³ölbµÄµÚÏÂÒ»Ïî
 	}
 
-	Polynomial fc;							// å’Œå¤šé¡¹å¼
+	Polynomial fc;							// ºÍ¶àÏîÊ½
 	fc.polyList = lc;
 
 	return fc;
 }
 
 Polynomial::Polynomial(const Polynomial &copy)
-// æ“ä½œç»“æœï¼šç”±å¤šé¡¹å¼copyæ„é€ æ–°å¤šé¡¹å¼â€”â€”å¤åˆ¶æ„é€ å‡½æ•°
+// ²Ù×÷½á¹û£ºÓÉ¶àÏîÊ½copy¹¹ÔìĞÂ¶àÏîÊ½¡ª¡ª¸´ÖÆ¹¹Ôìº¯Êı
 {
 	polyList = copy.polyList;
 }
 
 Polynomial::Polynomial(const LinkList<PolyItem> &copyLinkList)	
-// æ“ä½œç»“æœï¼šç”±å¤šé¡¹å¼ç»„æˆçš„çº¿æ€§è¡¨æ„é€ å¤šé¡¹å¼â€”â€”è½¬æ¢æ„é€ å‡½æ•°
+// ²Ù×÷½á¹û£ºÓÉ¶àÏîÊ½×é³ÉµÄÏßĞÔ±í¹¹Ôì¶àÏîÊ½¡ª¡ª×ª»»¹¹Ôìº¯Êı
 {
 	polyList = copyLinkList;
 }
 
 Polynomial &Polynomial::operator =(const Polynomial &copy)	
-// æ“ä½œç»“æœï¼šå°†å¤šé¡¹å¼copyèµ‹å€¼ç»™å½“å‰å¤šé¡¹å¼â€”â€”èµ‹å€¼è¯­å¥é‡è½½
+// ²Ù×÷½á¹û£º½«¶àÏîÊ½copy¸³Öµ¸øµ±Ç°¶àÏîÊ½¡ª¡ª¸³ÖµÓï¾äÖØÔØ
 {
 	if ( &copy != this)	{
 		polyList = copy.polyList;
@@ -174,8 +197,8 @@ Polynomial &Polynomial::operator =(const Polynomial &copy)
 }
 
 Polynomial &Polynomial::operator =(const LinkList<PolyItem> &copyLinkList)
-// æ“ä½œç»“æœï¼šå°†å¤šé¡¹å¼ç»„æˆçš„çº¿æ€§è¡¨copyLinkListèµ‹å€¼ç»™å½“å‰å¤šé¡¹å¼
-//	â€”â€”èµ‹å€¼è¯­å¥é‡è½½
+// ²Ù×÷½á¹û£º½«¶àÏîÊ½×é³ÉµÄÏßĞÔ±ícopyLinkList¸³Öµ¸øµ±Ç°¶àÏîÊ½
+//	¡ª¡ª¸³ÖµÓï¾äÖØÔØ
 {
 	polyList = copyLinkList;
 	return *this;
