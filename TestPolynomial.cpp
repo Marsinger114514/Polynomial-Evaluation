@@ -11,7 +11,7 @@ int main()
         cout  <<"2. 显示多项式." << endl;
         cout  <<"3. 多项式加法." << endl;
 		cout  <<"4. 多项式求导." << endl;
-		cout  <<"5. 多项式加法." << endl;
+		cout  <<"5. 多项式乘法." << endl;
 		cout << "6. 多项式减法." << endl;
 		cout << "7. 多项式求值." << endl;
 		cout << "0. 退出." << endl;
