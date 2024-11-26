@@ -96,7 +96,8 @@ Polynomial Polynomial::d() const {
 	while (aStatus == ENTRY_FOUND) {
 		aItem.coef = aItem.coef * aItem.expn;
 		aItem.expn--;
-		lb.InsertElem(aItem);
+		if(aItem.expn!=-1)
+			lb.InsertElem(aItem);
 		aStatus = la.GetElem(aPos++, aItem);
 	}
 	Polynomial fa;							// 和多项式
