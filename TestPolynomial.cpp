@@ -10,6 +10,7 @@ int main()
         cout << endl << "1. 生成多项式.";
         cout << endl << "2. 显示多项式.";
         cout << endl << "3. 多项式加法.";
+		cout << endl << "4. 多项式求导.";
 		cout << endl << "0. 退出";
 		cout << endl << "选择功能(0~3):";
 		cin >> c;
@@ -56,6 +57,22 @@ int main()
 			    cout << "fa + fb:" << endl;		// 显示fc = fa + fb
 				fc.Display();
 			    cout << endl;			
+				break;
+			case '4':
+				cout << endl << "输入(coef, expn)(expn = -1时退出):" << endl;
+				cin >> it.coef >> it.expn;
+				while (it.expn != -1) {
+					fa.InsItem(it);
+					cin >> it.coef >> it.expn;
+				}
+				fb = fa.d();
+				cout << "fa:" << endl;			// 显示fa
+				fa.Display();
+				cout << endl;
+
+				cout << "fb:" << endl;			// 显示fa
+				fb.Display();
+				cout << endl;
 				break;
 		}
 	}

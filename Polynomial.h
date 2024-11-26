@@ -25,6 +25,7 @@ public:
 	Polynomial(const Polynomial &copy);			// 复制构造函数
 	Polynomial(const LinkList<PolyItem> &copyLinkList);				
 		// 由多项式组成的线性表构造多项式
+	Polynomial d() const;						//求导函数
 	Polynomial &operator =(const Polynomial &copy);	// 赋值语句重载
 	Polynomial &operator =(const LinkList<PolyItem> &copyLinkList);	// 赋值语句重载
 };
@@ -82,6 +83,25 @@ void Polynomial::InsItem( const PolyItem &item)
 	while ( status == ENTRY_FOUND && it.expn > item.expn) 	// 查找插入位置
 			status = polyList.GetElem(++pos, it);
 	polyList.InsertElem(pos, item);					            // 向多项式插入一项
+}
+
+Polynomial Polynomial::d() const {
+	LinkList<PolyItem> la = polyList;
+	LinkList<PolyItem> lb;
+	int aPos = 1;
+	PolyItem aItem;
+	Status aStatus;
+	aStatus = la.GetElem(aPos++, aItem);
+
+	while (aStatus == ENTRY_FOUND) {
+		aItem.coef = aItem.coef * aItem.expn;
+		aItem.expn--;
+		lb.InsertElem(aItem);
+		aStatus = la.GetElem(aPos++, aItem);
+	}
+	Polynomial fa;							// 和多项式
+	fa.polyList = lb;
+	return fa;
 }
 
 Polynomial Polynomial::operator +(const Polynomial &p) const
