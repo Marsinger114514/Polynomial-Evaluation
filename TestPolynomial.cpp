@@ -1,5 +1,5 @@
-#include "Assistance.h"	// å®ç”¨ç¨‹åºè½¯ä»¶åŒ…
-#include "Polynomial.h"	// å¤šé¡¹å¼ç±»
+#include "Assistance.h"	// ÊµÓÃ³ÌĞòÈí¼ş°ü
+#include "Polynomial.h"	// ¶àÏîÊ½Àà
 int main()
 {
 	char c = '1';
@@ -7,19 +7,19 @@ int main()
     PolyItem it;
 
     while (c != '0'){
-        cout  <<"1. ç”Ÿæˆå¤šé¡¹å¼." << endl;
-        cout  <<"2. æ˜¾ç¤ºå¤šé¡¹å¼." << endl;
-        cout  <<"3. å¤šé¡¹å¼åŠ æ³•." << endl;
-		cout  <<"4. å¤šé¡¹å¼æ±‚å¯¼." << endl;
-		cout  <<"5. å¤šé¡¹å¼ä¹˜æ³•." << endl;
-		cout << "6. å¤šé¡¹å¼å‡æ³•." << endl;
-		cout << "7. å¤šé¡¹å¼æ±‚å€¼." << endl;
-		cout << "0. é€€å‡º." << endl;
-		cout  <<"é€‰æ‹©åŠŸèƒ½(0~7):" << endl;
+        cout  <<"1. Éú³É¶àÏîÊ½." << endl;
+        cout  <<"2. ÏÔÊ¾¶àÏîÊ½." << endl;
+        cout  <<"3. ¶àÏîÊ½¼Ó·¨." << endl;
+		cout  <<"4. ¶àÏîÊ½Çóµ¼." << endl;
+		cout  <<"5. ¶àÏîÊ½³Ë·¨." << endl;
+		cout << "6. ¶àÏîÊ½¼õ·¨." << endl;
+		cout << "7. ¶àÏîÊ½ÇóÖµ." << endl;
+		cout << "0. ÍË³ö." << endl;
+		cout  <<"Ñ¡Ôñ¹¦ÄÜ(0~7):" << endl;
 		cin >> c;
 		switch (c) {
 		case '1':
-			cout << endl << "è¾“å…¥(coef, expn)(expn = -1æ—¶é€€å‡º):" << endl;
+			cout << endl << "ÊäÈë(coef, expn)(expn = -1Ê±ÍË³ö):" << endl;
 			cin >> it.coef >> it.expn;
 			while (it.expn != -1) {
 				fa.InsItem(it);
@@ -30,18 +30,18 @@ int main()
 			fa.Display();
 			break;
 		case '3':
-			// è¾“å…¥fa
-			fa.SetZero();		// å°†faè®¾ç½®ä¸º0
-			cout << endl << "è¾“å…¥façš„é¡¹(coef, expn)(e = -1æ—¶é€€å‡º):" << endl;
+			// ÊäÈëfa
+			fa.SetZero();		// ½«faÉèÖÃÎª0
+			cout << endl << "ÊäÈëfaµÄÏî(coef, expn)(e = -1Ê±ÍË³ö):" << endl;
 			cin >> it.coef >> it.expn;
 			while (it.expn != -1) {
 				fa.InsItem(it);
 				cin >> it.coef >> it.expn;
 			}
 
-			// è¾“å…¥fb
-			fb.SetZero();		// å°†fbè®¾ç½®ä¸º0
-			cout << endl << "è¾“å…¥fbçš„é¡¹(coef, expn)(e = -1æ—¶é€€å‡º):" << endl;
+			// ÊäÈëfb
+			fb.SetZero();		// ½«fbÉèÖÃÎª0
+			cout << endl << "ÊäÈëfbµÄÏî(coef, expn)(e = -1Ê±ÍË³ö):" << endl;
 			cin >> it.coef >> it.expn;
 			while (it.expn != -1) {
 				fb.InsItem(it);
@@ -49,78 +49,79 @@ int main()
 			}
 
 			fc = fa + fb;
-			cout << "fa:" << endl;			// æ˜¾ç¤ºfa
+			cout << "fa:" << endl;			// ÏÔÊ¾fa
 			fa.Display();
 			cout << endl;
 
-			cout << "fb:" << endl;			// æ˜¾ç¤ºfa
+			cout << "fb:" << endl;			// ÏÔÊ¾fa
 			fb.Display();
 			cout << endl;
 
-			cout << "fa + fb:" << endl;		// æ˜¾ç¤ºfc = fa + fb
+			cout << "fa + fb:" << endl;		// ÏÔÊ¾fc = fa + fb
 			fc.Display();
 			cout << endl;
 			break;
 		case '4':
-			cout << endl << "è¾“å…¥(coef, expn)(expn = -1æ—¶é€€å‡º):" << endl;
+			fa.SetZero();
+			cout << endl << "ÊäÈë(coef, expn)(expn = -1Ê±ÍË³ö):" << endl;
 			cin >> it.coef >> it.expn;
 			while (it.expn != -1) {
 				fa.InsItem(it);
 				cin >> it.coef >> it.expn;
 			}
 			fb = fa.d();
-			cout << "fa:" << endl;			// æ˜¾ç¤ºfa
+			cout << "fa:" << endl;			// ÏÔÊ¾fa
 			fa.Display();
 			cout << endl;
 
-			cout << "fb:" << endl;			// æ˜¾ç¤ºfa
+			cout << "fb:" << endl;			// ÏÔÊ¾fa
 			fb.Display();
 			cout << endl;
 			break;
 		case '5':
-			fa.SetZero();		// å°†faè®¾ç½®ä¸º0
-			cout << endl << "è¾“å…¥façš„é¡¹(coef, expn)(e = -1æ—¶é€€å‡º):" << endl;
+			fa.SetZero();		// ½«faÉèÖÃÎª0
+			cout << endl << "ÊäÈëfaµÄÏî(coef, expn)(e = -1Ê±ÍË³ö):" << endl;
 			cin >> it.coef >> it.expn;
 			while (it.expn != -1) {
 				fa.InsItem(it);
 				cin >> it.coef >> it.expn;
 			}
 
-			// è¾“å…¥fb
-			fb.SetZero();		// å°†fbè®¾ç½®ä¸º0
-			cout << endl << "è¾“å…¥fbçš„é¡¹(coef, expn)(e = -1æ—¶é€€å‡º):" << endl;
+			// ÊäÈëfb
+			fb.SetZero();		// ½«fbÉèÖÃÎª0
+			cout << endl << "ÊäÈëfbµÄÏî(coef, expn)(e = -1Ê±ÍË³ö):" << endl;
 			cin >> it.coef >> it.expn;
 			while (it.expn != -1) {
 				fb.InsItem(it);
 				cin >> it.coef >> it.expn;
 			}
 			fc = fa * fb;
-			cout << "fa:" << endl;			// æ˜¾ç¤ºfa
+			cout << "fa:" << endl;			// ÏÔÊ¾fa
 			fa.Display();
 			cout << endl;
 
-			cout << "fb:" << endl;			// æ˜¾ç¤ºfa
+			cout << "fb:" << endl;			// ÏÔÊ¾fa
 			fb.Display();
 			cout << endl;
 
-			cout << "fa * fb:" << endl;		// æ˜¾ç¤ºfc = fa * fb
+			cout << "fa * fb:" << endl;		// ÏÔÊ¾fc = fa * fb
 			fc.Display();
 			cout << endl;
 			break;
 
 		case '6':
-			// è¾“å…¥fa
-			fa.SetZero();		// å°†faè®¾ç½®ä¸º0
-			cout << endl << "è¾“å…¥façš„é¡¹(coef, expn)(e = -1æ—¶é€€å‡º):" << endl;
+			// ÊäÈëfa
+			fa.SetZero();		// ½«faÉèÖÃÎª0
+			cout << endl << "ÊäÈëfaµÄÏî(coef, expn)(e = -1Ê±ÍË³ö):" << endl;
 			cin >> it.coef >> it.expn;
 			while (it.expn != -1) {
 				fa.InsItem(it);
 				cin >> it.coef >> it.expn;
 			}
 
-			// è¾“å…¥fb
-			fb.SetZero();		// å°†fbè®¾ç½®ä¸º0
-			cout << endl << "è¾“å…¥fbçš„é¡¹(coef, expn)(e = -1æ—¶é€€å‡º):" << endl;
+			// ÊäÈëfb
+			fb.SetZero();		// ½«fbÉèÖÃÎª0
+			cout << endl << "ÊäÈëfbµÄÏî(coef, expn)(e = -1Ê±ÍË³ö):" << endl;
 			cin >> it.coef >> it.expn;
 			while (it.expn != -1) {
 				fb.InsItem(it);
@@ -128,27 +129,27 @@ int main()
 			}
 
 			fc = fa - fb;
-			cout << "fa:" << endl;			// æ˜¾ç¤ºfa
+			cout << "fa:" << endl;			// ÏÔÊ¾fa
 			fa.Display();
 			cout << endl;
 
-			cout << "fb:" << endl;			// æ˜¾ç¤ºfa
+			cout << "fb:" << endl;			// ÏÔÊ¾fa
 			fb.Display();
 			cout << endl;
 
-			cout << "fa - fb:" << endl;		// æ˜¾ç¤ºfc = fa - fb
+			cout << "fa - fb:" << endl;		// ÏÔÊ¾fc = fa - fb
 			fc.Display();
 			cout << endl;
 			break;
 
 		case '7':
-			cout << endl << "è¾“å…¥è¦è®¡ç®—çš„å¤šé¡¹å¼çš„xå€¼: ";
+			cout << endl << "ÊäÈëÒª¼ÆËãµÄ¶àÏîÊ½µÄxÖµ: ";
 			int x;
 			cin >> x;
-			cout << "å¤šé¡¹å¼åœ¨x = " << x << "å¤„çš„å€¼ä¸º: " << fa.Evaluate(x) << endl;
+			cout << "¶àÏîÊ½ÔÚx = " << x << "´¦µÄÖµÎª: " << fa.Evaluate(x) << endl;
 			break;
 		}
 	}
-	system("PAUSE");				// è°ƒç”¨åº“å‡½æ•°system()
-	return 0;						// è¿”å›å€¼0, è¿”å›æ“ä½œç³»ç»Ÿ
+	system("PAUSE");				// µ÷ÓÃ¿âº¯Êısystem()
+	return 0;						// ·µ»ØÖµ0, ·µ»Ø²Ù×÷ÏµÍ³
 }
