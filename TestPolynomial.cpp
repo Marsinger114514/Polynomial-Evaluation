@@ -6,6 +6,8 @@ int main()
     Polynomial fa, fb, fc;
     PolyItem it;
     while (c != '0'){
+		std::cin.clear(); // 清除错误状态
+		rewind(stdin);		//防止多输入从而影响其它测试进程。
 		bool astatus = fa.IsZero(),bstatus=fb.IsZero();
         cout  <<"1. 输入多项式." << endl;
         cout  <<"2. 显示多项式." << endl;
@@ -18,7 +20,8 @@ int main()
 		cout << "0. 退出." << endl;
 		cout  <<"选择功能(0~8):" << endl;
 		cin >> c;
-		cin.sync();
+		std::cin.clear(); // 清除错误状态
+		rewind(stdin);			//防止多输入从而影响其它测试进程。
 		switch (c) {
 		case '1':
 			// 输入fa
@@ -28,8 +31,9 @@ int main()
 			while (it.expn >=0) {
 				fa.InsItem(it);
 				cin >> it.coef >> it.expn;
-			}
-			cin.sync();
+			}			
+			std::cin.clear(); // 清除错误状态
+			rewind(stdin);			//防止多输入从而影响其它测试进程。
 			// 输入fb
 			fb.SetZero();		// 将fb设置为0
 			cout << endl << "输入fb的项(coef, expn)(e <0 时退出):" << endl;
@@ -38,7 +42,8 @@ int main()
 				fb.InsItem(it);
 				cin >> it.coef >> it.expn;
 			}
-			cin.sync();
+			std::cin.clear(); // 清除错误状态
+			rewind(stdin);			//防止多输入从而影响其它测试进程。
 			break;
 		case '2':
 			if (astatus && bstatus) {
@@ -139,6 +144,8 @@ int main()
 			cout << endl << "输入要计算的多项式的x值: ";
 			int x;
 			cin >> x;
+			std::cin.clear(); // 清除错误状态
+			rewind(stdin);			//防止多输入从而影响其它测试进程。
 			cout << "多项式a在x = " << x << "处的值为: " << fa.Evaluate(x) << endl;
 			cout << "多项式b在x = " << x << "处的值为: " << fb.Evaluate(x) << endl;
 			cout << "多项式c在x = " << x << "处的值为: " << fc.Evaluate(x) << endl;
@@ -170,4 +177,5 @@ int main()
 2 1
 3 2
 4 -1
+111
 */
