@@ -29,6 +29,7 @@ int main()
 			break;
 		case '2':
 			fa.Display();
+			cout << endl;
 			break;
 		case '3':
 			// 输入fa
@@ -181,3 +182,14 @@ int main()
 	system("PAUSE");				// 调用库函数system()
 	return 0;						// 返回值0, 返回操作系统
 }
+/*
+2 0
+3 1
+2 2
+3 -1
+
+1 0
+2 1
+3 2
+4 -1
+*/
