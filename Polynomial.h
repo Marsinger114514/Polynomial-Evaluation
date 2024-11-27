@@ -71,13 +71,15 @@ void Polynomial::Display()
 	while ( status == ENTRY_FOUND)	{// 依次显示多项式的每一项
 	    if (pos > 1 && it.coef>0)
           cout<<"+";
-        if ( it.coef != 1)
-            if (it.coef !=-1)
-               cout << it.coef;
-            else 
-               cout << "-";
+		if (it.coef != 1)
+			if (it.coef != -1)
+				cout << it.coef;
+			else if (it.expn != 0)
+				cout << "-";
+			else
+				cout << it.coef;
 		else if (it.coef == 1) {
-			if (it.expn <= 1) {
+			if (it.expn < 1) {
 				cout << it.coef;
 			}
 		}

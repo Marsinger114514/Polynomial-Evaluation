@@ -5,9 +5,9 @@ int main()
 	char c = '1';
     Polynomial fa, fb, fc;
     PolyItem it;
-
     while (c != '0'){
-        cout  <<"1. 生成多项式." << endl;
+		bool astatus = fa.IsZero(),bstatus=fb.IsZero();
+        cout  <<"1. 输入多项式." << endl;
         cout  <<"2. 显示多项式." << endl;
         cout  <<"3. 多项式加法." << endl;
 		cout  <<"4. 多项式求导." << endl;
@@ -20,36 +20,44 @@ int main()
 		cin >> c;
 		switch (c) {
 		case '1':
-			cout << endl << "输入(coef, expn)(expn = -1时退出):" << endl;
+			// 输入fa
+			fa.SetZero();		// 将fa设置为0
+			cout << endl << "输入fa的项(coef, expn)(e <0 时退出):" << endl;
 			cin >> it.coef >> it.expn;
-			while (it.expn != -1) {
+			while (it.expn >=0) {
 				fa.InsItem(it);
+				cin >> it.coef >> it.expn;
+			}
+			// 输入fb
+			fb.SetZero();		// 将fb设置为0
+			cout << endl << "输入fb的项(coef, expn)(e <0 时退出):" << endl;
+			cin >> it.coef >> it.expn;
+			while (it.expn >=0) {
+				fb.InsItem(it);
 				cin >> it.coef >> it.expn;
 			}
 			break;
 		case '2':
-			fa.Display();
-			cout << endl;
+			if (astatus && bstatus) {
+				puts("请输入fa或者fb!");
+				break;
+			}
+			if (!astatus) {
+				cout << "fa:" << endl;
+				fa.Display();
+				cout << endl;
+			}
+			if (!bstatus) {
+				cout << "fb:" << endl;
+				fb.Display();
+				cout << endl;
+			}
 			break;
 		case '3':
-			// 输入fa
-			fa.SetZero();		// 将fa设置为0
-			cout << endl << "输入fa的项(coef, expn)(e = -1时退出):" << endl;
-			cin >> it.coef >> it.expn;
-			while (it.expn != -1) {
-				fa.InsItem(it);
-				cin >> it.coef >> it.expn;
+			if (astatus || bstatus) {
+				puts("请输入fa和fb!");
+				break;
 			}
-
-			// 输入fb
-			fb.SetZero();		// 将fb设置为0
-			cout << endl << "输入fb的项(coef, expn)(e = -1时退出):" << endl;
-			cin >> it.coef >> it.expn;
-			while (it.expn != -1) {
-				fb.InsItem(it);
-				cin >> it.coef >> it.expn;
-			}
-
 			fc = fa + fb;
 			cout << "fa:" << endl;			// 显示fa
 			fa.Display();
@@ -65,39 +73,31 @@ int main()
 			break;
 			fa = fc;
 		case '4':
-			fa.SetZero();
-			cout << endl << "输入(coef, expn)(expn = -1时退出):" << endl;
-			cin >> it.coef >> it.expn;
-			while (it.expn != -1) {
-				fa.InsItem(it);
-				cin >> it.coef >> it.expn;
+			if (astatus || bstatus) {
+				puts("请输入fa和fb!");
+				break;
 			}
-			fb = fa.d();
+			fc = fa.d();
 			cout << "fa:" << endl;			// 显示fa
 			fa.Display();
 			cout << endl;
-
-			cout << "d(fa):" << endl;			// 显示fa
+			cout << "fb:" << endl;			// 显示fa
 			fb.Display();
+			cout << endl;
+
+			cout << "d(fa):" << endl;			// 显示d(fa)
+			fc.Display();
+			cout << endl;
+			fc = fb.d();
+			cout << "d(fb)" << endl;		//显示d(fb)
+			fc.Display();
 			cout << endl;
 			break;
 			fa = fb;
 		case '5':
-			fa.SetZero();		// 将fa设置为0
-			cout << endl << "输入fa的项(coef, expn)(e = -1时退出):" << endl;
-			cin >> it.coef >> it.expn;
-			while (it.expn != -1) {
-				fa.InsItem(it);
-				cin >> it.coef >> it.expn;
-			}
-
-			// 输入fb
-			fb.SetZero();		// 将fb设置为0
-			cout << endl << "输入fb的项(coef, expn)(e = -1时退出):" << endl;
-			cin >> it.coef >> it.expn;
-			while (it.expn != -1) {
-				fb.InsItem(it);
-				cin >> it.coef >> it.expn;
+			if (astatus || bstatus) {
+				puts("请输入fa和fb!");
+				break;
 			}
 			fc = fa * fb;
 			cout << "fa:" << endl;			// 显示fa
@@ -114,24 +114,10 @@ int main()
 			break;
 			fa = fc;
 		case '6':
-			// 输入fa
-			fa.SetZero();		// 将fa设置为0
-			cout << endl << "输入fa的项(coef, expn)(e = -1时退出):" << endl;
-			cin >> it.coef >> it.expn;
-			while (it.expn != -1) {
-				fa.InsItem(it);
-				cin >> it.coef >> it.expn;
+			if (astatus || bstatus) {
+				puts("请输入fa和fb!");
+				break;
 			}
-
-			// 输入fb
-			fb.SetZero();		// 将fb设置为0
-			cout << endl << "输入fb的项(coef, expn)(e = -1时退出):" << endl;
-			cin >> it.coef >> it.expn;
-			while (it.expn != -1) {
-				fb.InsItem(it);
-				cin >> it.coef >> it.expn;
-			}
-
 			fc = fa - fb;
 			cout << "fa:" << endl;			// 显示fa
 			fa.Display();
@@ -147,36 +133,29 @@ int main()
 			break;
 			fa = fc;
 		case '7':
+			if (astatus || bstatus) {
+				puts("请输入fa和fb!");
+				break;
+			}
 			cout << endl << "输入要计算的多项式的x值: ";
 			int x;
 			cin >> x;
-			cout << "多项式在x = " << x << "处的值为: " << fa.Evaluate(x) << endl;
+			cout << "多项式a在x = " << x << "处的值为: " << fa.Evaluate(x) << endl;
+			cout << "多项式b在x = " << x << "处的值为: " << fb.Evaluate(x) << endl;
 			break;
-
 		case '8':
-			// 输入fa
-			fa.SetZero();		// 将fa设置为0
-			cout << endl << "输入fa的项(coef, expn)(e = -1时退出):" << endl;
-			cin >> it.coef >> it.expn;
-			while (it.expn != -1) {
-				fa.InsItem(it);
-				cin >> it.coef >> it.expn;
+			if (astatus || bstatus) {
+				puts("请输入fa和fb!");
+				break;
 			}
-
-			// 输入fb
-			fb.SetZero();		// 将fb设置为0
-			cout << endl << "输入fb的项(coef, expn)(e = -1时退出):" << endl;
-			cin >> it.coef >> it.expn;
-			while (it.expn != -1) {
-				fb.InsItem(it);
-				cin >> it.coef >> it.expn;
-			}
-
 			fc = fa + fb + fa.d() + fb.d();
 			cout << "fa+fb+d(fa)+d(fb):" << endl;			// 显示fa
 			fc.Display();
 			cout << endl;
 			fa = fc;
+			break;
+		default:
+			break;
 		}
 	}
 	system("PAUSE");				// 调用库函数system()
