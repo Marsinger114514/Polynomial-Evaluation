@@ -18,6 +18,7 @@ int main()
 		cout << "0. 退出." << endl;
 		cout  <<"选择功能(0~8):" << endl;
 		cin >> c;
+		cin.sync();
 		switch (c) {
 		case '1':
 			// 输入fa
@@ -28,6 +29,7 @@ int main()
 				fa.InsItem(it);
 				cin >> it.coef >> it.expn;
 			}
+			cin.sync();
 			// 输入fb
 			fb.SetZero();		// 将fb设置为0
 			cout << endl << "输入fb的项(coef, expn)(e <0 时退出):" << endl;
@@ -36,6 +38,7 @@ int main()
 				fb.InsItem(it);
 				cin >> it.coef >> it.expn;
 			}
+			cin.sync();
 			break;
 		case '2':
 			if (astatus && bstatus) {
