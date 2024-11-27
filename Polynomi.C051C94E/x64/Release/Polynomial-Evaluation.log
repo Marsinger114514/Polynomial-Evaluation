@@ -1,6 +1,6 @@
 ﻿  TestPolynomial.cpp
-D:\STUDY\class\Polynomial-Evaluation\Assistance.h(79,2): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+E:\CPPproject\Polynomial-Evaluation\Assistance.h(79,2): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   (编译源文件“TestPolynomial.cpp”)
   
 LINK : warning LNK4075: 忽略“/INCREMENTAL”(由于“/OPT:ICF”规范)
-  Polynomial-Evaluation.vcxproj -> D:\STUDY\class\Polynomial-Evaluation\x64\Release\Polynomial-Evaluation.exe
+  Polynomial-Evaluation.vcxproj -> E:\CPPproject\Polynomial-Evaluation\x64\Release\Polynomial-Evaluation.exe

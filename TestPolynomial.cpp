@@ -71,7 +71,6 @@ int main()
 			fc.Display();
 			cout << endl;
 			break;
-			fa = fc;
 		case '4':
 			if (astatus || bstatus) {
 				puts("请输入fa和fb!");
@@ -93,7 +92,6 @@ int main()
 			fc.Display();
 			cout << endl;
 			break;
-			fa = fb;
 		case '5':
 			if (astatus || bstatus) {
 				puts("请输入fa和fb!");
@@ -112,7 +110,6 @@ int main()
 			fc.Display();
 			cout << endl;
 			break;
-			fa = fc;
 		case '6':
 			if (astatus || bstatus) {
 				puts("请输入fa和fb!");
@@ -131,7 +128,6 @@ int main()
 			fc.Display();
 			cout << endl;
 			break;
-			fa = fc;
 		case '7':
 			if (astatus || bstatus) {
 				puts("请输入fa和fb!");
@@ -142,6 +138,7 @@ int main()
 			cin >> x;
 			cout << "多项式a在x = " << x << "处的值为: " << fa.Evaluate(x) << endl;
 			cout << "多项式b在x = " << x << "处的值为: " << fb.Evaluate(x) << endl;
+			cout << "多项式c在x = " << x << "处的值为: " << fc.Evaluate(x) << endl;
 			break;
 		case '8':
 			if (astatus || bstatus) {
@@ -152,7 +149,6 @@ int main()
 			cout << "fa+fb+d(fa)+d(fb):" << endl;			// 显示fa
 			fc.Display();
 			cout << endl;
-			fa = fc;
 			break;
 		default:
 			break;
